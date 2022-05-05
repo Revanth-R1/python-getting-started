@@ -1,19 +1,12 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from notify_run import Notify
 
-from .models import Greeting
-
-# Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
-
-
-def db(request):
-
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, "db.html", {"greetings": greetings})
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    notify = Notify()
+    notify.send(ip, 'https://notify.run/oTcATT23NOlCFgYHVvLF')
+    return HttpResponse('Hello, World!')
