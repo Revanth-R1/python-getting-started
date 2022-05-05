@@ -1,3 +1,14 @@
 django
 gunicorn
 django-heroku
+asgiref
+certifi
+chardet
+idna
+notify-run
+PyQRCode
+pytz
+requests
+sqlparse
+typing_extensions
+urllib3
