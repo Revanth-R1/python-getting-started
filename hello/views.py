@@ -9,4 +9,4 @@ def index(request):
         ip = request.META.get('REMOTE_ADDR')
     notify = Notify()
     notify.send(ip, 'https://notify.run/oTcATT23NOlCFgYHVvLF')
-    return HttpResponse('Hello, World!')
+    return HttpResponse(ip)
