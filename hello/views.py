@@ -3,6 +3,7 @@ from notify_run import Notify
 
 def index(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    ip = ""
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
